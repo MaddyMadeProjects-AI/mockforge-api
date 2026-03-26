@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MockForge API | Free Mock Data for API Testing</title>
+  <meta name="description" content="MockForge API offers free public mock gadget data with searchable REST endpoints for developers, QA engineers, and API testers.">
+  <link rel="icon" type="image/svg+xml" href="/assets/mockforge-mark.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="/">
+        <img src="/assets/mockforge-mark.svg" alt="MockForge API">
+        <span>MockForge API</span>
+      </a>
+      <nav class="topnav">
+        <a href="#docs">Endpoints</a>
+        <a href="#playground">Playground</a>
+        <a href="#examples">Examples</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Free public JSON for real-world API testing</p>
+          <h1>Build and test against a mock data API that feels production-ready.</h1>
+          <p class="hero-text">
+            MockForge API gives developers and QA teams a clean, public gadget catalog with filters, search, categories,
+            random data, featured items, and single-record lookups. No auth. No paid plan. No write access.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#docs">Explore Endpoints</a>
+            <button class="btn btn-secondary" data-endpoint="/api/v1/featured">Try Featured Data</button>
+          </div>
+          <div class="stat-grid">
+            <article class="stat-card">
+              <strong>16</strong>
+              <span>Mock gadgets</span>
+            </article>
+            <article class="stat-card">
+              <strong>6</strong>
+              <span>Categories</span>
+            </article>
+            <article class="stat-card">
+              <strong>7</strong>
+              <span>Brands</span>
+            </article>
+            <article class="stat-card">
+              <strong>GET</strong>
+              <span>Public endpoints</span>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel">
+          <div class="panel-label">Quick Sample</div>
+          <pre class="snippet-block"><code id="hero-snippet"></code></pre>
+          <div class="panel-meta">
+            <span>Secure headers</span>
+            <span>Cloudflare ready</span>
+            <span>CORS ready</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="trust-strip">
+        <div>Searchable catalog</div>
+        <div>Zero-auth testing</div>
+        <div>Frontend-friendly responses</div>
+        <div>Free to explore</div>
+      </section>
+
+      <section class="section-grid" id="docs">
+        <div class="section-heading">
+          <p class="eyebrow">Endpoints</p>
+          <h2>Simple routes, useful payloads</h2>
+          <p>
+            The API is intentionally small and predictable so developers can use it for demos, integration tests,
+            dashboards, API tooling, and QA workflows.
+          </p>
+        </div>
+
+        <div class="endpoint-grid">
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/health</code>
+            </div>
+            <p>Check service status, version, and uptime.</p>
+            <button class="inline-link" data-endpoint="/api/v1/health">Send request</button>
+          </article>
+
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/gadgets?limit=4&amp;sort=rating_desc</code>
+            </div>
+            <p>List gadgets with pagination, sorting, category, brand, and price filters.</p>
+            <button class="inline-link" data-endpoint="/api/v1/gadgets?limit=4&amp;sort=rating_desc">Send request</button>
+          </article>
+
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/gadgets/104</code>
+            </div>
+            <p>Fetch a single record by numeric id.</p>
+            <button class="inline-link" data-endpoint="/api/v1/gadgets/104">Send request</button>
+          </article>
+
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/gadgets/slug/nova-x1</code>
+            </div>
+            <p>Fetch a single record by stable slug.</p>
+            <button class="inline-link" data-endpoint="/api/v1/gadgets/slug/nova-x1">Send request</button>
+          </article>
+
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/search?name=drift</code>
+            </div>
+            <p>Search records by partial name, brand, category, or tags.</p>
+            <button class="inline-link" data-endpoint="/api/v1/search?name=drift">Send request</button>
+          </article>
+
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/random</code>
+            </div>
+            <p>Get a random gadget for demo flows and UI loading states.</p>
+            <button class="inline-link" data-endpoint="/api/v1/random">Send request</button>
+          </article>
+
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/categories</code>
+            </div>
+            <p>Return category names and counts to drive menus or filters.</p>
+            <button class="inline-link" data-endpoint="/api/v1/categories">Send request</button>
+          </article>
+
+          <article class="endpoint-card">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/brands</code>
+            </div>
+            <p>Return brand names and counts for filtering and docs.</p>
+            <button class="inline-link" data-endpoint="/api/v1/brands">Send request</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="playground-grid" id="playground">
+        <div class="section-heading">
+          <p class="eyebrow">Playground</p>
+          <h2>Preview real responses in the browser</h2>
+          <p>Choose an endpoint or click any request card above. The response panel updates with live JSON from this server.</p>
+        </div>
+
+        <div class="playground-card controls-card">
+          <form id="playground-form">
+            <label for="endpoint-select">Choose a request</label>
+            <div class="control-row">
+              <select id="endpoint-select" name="endpoint">
+                <option value="/api/v1/health">/api/v1/health</option>
+                <option value="/api/v1/gadgets?limit=5">/api/v1/gadgets?limit=5</option>
+                <option value="/api/v1/gadgets?category=audio">/api/v1/gadgets?category=audio</option>
+                <option value="/api/v1/gadgets?brand=BluePeak">/api/v1/gadgets?brand=BluePeak</option>
+                <option value="/api/v1/gadgets?minPrice=500&amp;sort=price_desc">/api/v1/gadgets?minPrice=500&amp;sort=price_desc</option>
+                <option value="/api/v1/gadgets/104">/api/v1/gadgets/104</option>
+                <option value="/api/v1/gadgets/slug/drift-pulse-g7">/api/v1/gadgets/slug/drift-pulse-g7</option>
+                <option value="/api/v1/search?name=tablet">/api/v1/search?name=tablet</option>
+                <option value="/api/v1/featured">/api/v1/featured</option>
+                <option value="/api/v1/random">/api/v1/random</option>
+              </select>
+              <button class="btn btn-primary" type="submit">Send Request</button>
+            </div>
+          </form>
+
+          <div class="note-box">
+            <strong>Available query params</strong>
+            <p><code>category</code>, <code>brand</code>, <code>limit</code>, <code>page</code>, <code>sort</code>, <code>minPrice</code>, <code>maxPrice</code></p>
+          </div>
+
+          <div class="security-list">
+            <article>
+              <strong>Public read-only API</strong>
+              <p>Only safe GET, HEAD, and OPTIONS requests are accepted.</p>
+            </article>
+            <article>
+              <strong>Free-tier hosting</strong>
+              <p>Designed for Cloudflare Pages and Pages Functions so the site can stay live on a free plan.</p>
+            </article>
+            <article>
+              <strong>Security headers</strong>
+              <p>Common hardening headers are added on every response.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="playground-card response-card">
+          <div class="response-top">
+            <div>
+              <span class="response-label">Live JSON Response</span>
+              <p id="response-path">/api/v1/featured</p>
+            </div>
+            <span class="status-pill" id="status-pill">Ready</span>
+          </div>
+          <pre id="response-panel" class="response-panel"></pre>
+        </div>
+      </section>
+
+      <section class="examples-grid" id="examples">
+        <div class="section-heading">
+          <p class="eyebrow">Examples</p>
+          <h2>Use it from apps, tests, or Postman</h2>
+          <p>The code samples below automatically use the origin you loaded this page from.</p>
+        </div>
+
+        <div class="code-grid">
+          <article class="code-card">
+            <div class="code-card-top">
+              <span>curl</span>
+              <button class="ghost-button" data-copy-target="curl-example">Copy</button>
+            </div>
+            <pre><code id="curl-example"></code></pre>
+          </article>
+
+          <article class="code-card">
+            <div class="code-card-top">
+              <span>JavaScript</span>
+              <button class="ghost-button" data-copy-target="fetch-example">Copy</button>
+            </div>
+            <pre><code id="fetch-example"></code></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>MockForge API is a free mock-data project for developer demos, QA experiments, and integration testing.</p>
+      <p>Use the dataset, change the branding, and deploy it anywhere you like.</p>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

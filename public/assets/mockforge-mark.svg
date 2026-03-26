@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">MockForge API mark</title>
+  <desc id="desc">Abstract layered badge with the letter M</desc>
+  <defs>
+    <linearGradient id="bg" x1="10%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#ec7c52" />
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="108" height="108" rx="30" fill="url(#bg)" />
+  <path d="M30 88V40h12l22 23 22-23h12v48H84V60L64 80 44 60v28H30Z" fill="#fff7ef" />
+  <path d="M22 34c18-14 49-19 79-7" fill="none" stroke="rgba(255,247,239,0.32)" stroke-width="7" stroke-linecap="round" />
+</svg>

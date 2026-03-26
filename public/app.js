@@ -1,3 +1,4 @@
+const body = document.body;
 const responsePanel = document.getElementById("response-panel");
 const responsePath = document.getElementById("response-path");
 const statusPill = document.getElementById("status-pill");
@@ -7,6 +8,7 @@ const endpointSelect = document.getElementById("endpoint-select");
 const heroSnippet = document.getElementById("hero-snippet");
 const curlExample = document.getElementById("curl-example");
 const fetchExample = document.getElementById("fetch-example");
+const playwrightExample = document.getElementById("playwright-example");
 const copyButtons = document.querySelectorAll("[data-copy-target]");
 
 const origin = window.location.origin;
@@ -21,7 +23,7 @@ function updateExamples() {
     '    "page": 1,',
     '    "limit": 3,',
     '    "total": 16,',
-    '    "filters": { "sort": "rating_desc" }',
+    '    "sort": "rating_desc"',
     "  },",
     '  "data": [',
     '    { "id": 104, "name": "Atlas Note Pro 14", "rating": 4.9 },',
@@ -32,6 +34,7 @@ function updateExamples() {
   ].join("\n");
 
   curlExample.textContent = `curl "${origin}/api/v1/search?name=tablet"`;
+
   fetchExample.textContent = [
     "const response = await fetch(",
     `  "${origin}/api/v1/gadgets?brand=BluePeak&limit=2"`,
@@ -40,12 +43,32 @@ function updateExamples() {
     "const payload = await response.json();",
     "console.log(payload.data);"
   ].join("\n");
+
+  playwrightExample.textContent = [
+    "import { test, expect } from '@playwright/test';",
+    "",
+    "test('featured endpoint returns records', async ({ request }) => {",
+    `  const response = await request.get('${origin}/api/v1/featured');`,
+    "  expect(response.ok()).toBeTruthy();",
+    "",
+    "  const payload = await response.json();",
+    "  expect(payload.data.length).toBeGreaterThan(0);",
+    "});"
+  ].join("\n");
+}
+
+function setActiveEndpoint(endpoint) {
+  endpointButtons.forEach((button) => {
+    const isMatch = button.getAttribute("data-endpoint") === endpoint;
+    button.classList.toggle("is-active", isMatch);
+  });
 }
 
 async function loadEndpoint(endpoint) {
   responsePath.textContent = endpoint;
   statusPill.textContent = "Loading";
   responsePanel.textContent = "Request in progress...";
+  setActiveEndpoint(endpoint);
 
   try {
     const response = await fetch(endpoint, {
@@ -55,13 +78,12 @@ async function loadEndpoint(endpoint) {
     });
 
     const contentType = response.headers.get("content-type") || "";
-    let payload;
 
     if (contentType.includes("application/json")) {
-      payload = await response.json();
+      const payload = await response.json();
       responsePanel.textContent = JSON.stringify(payload, null, 2);
     } else {
-      payload = await response.text();
+      const payload = await response.text();
       responsePanel.textContent = payload;
     }
 
@@ -126,4 +148,7 @@ form.addEventListener("submit", (event) => {
 });
 
 updateExamples();
+window.setTimeout(() => {
+  body.classList.add("is-ready");
+}, 40);
 loadEndpoint(defaultEndpoint);

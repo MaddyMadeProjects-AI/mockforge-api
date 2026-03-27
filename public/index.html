@@ -22,9 +22,9 @@
       </a>
 
       <nav class="topnav">
-        <a href="#objects">CRM Objects</a>
-        <a href="#docs">Endpoints</a>
-        <a href="#playground">Explorer</a>
+        <a href="#start-here">Start Here</a>
+        <a href="#objects">Data</a>
+        <a href="#playground">Try API</a>
         <a href="#webhook-lab">Webhook Lab</a>
         <a href="#examples">Examples</a>
       </nav>
@@ -38,34 +38,34 @@
     <main>
       <section class="hero">
         <div class="hero-copy" data-reveal="up">
-          <p class="eyebrow">Free Salesforce-style integration sandbox</p>
-          <h1>Test inbound and outbound Salesforce integrations without touching a real org.</h1>
+          <p class="eyebrow">Free Salesforce-style API testing website</p>
+          <h1>Click a button, get clean test data, and start using the API.</h1>
           <p class="hero-text">
-            MockForge Salesforce Lab gives developers, QA teams, and middleware builders a clean CRM object API plus a webhook test bench.
-            Use it to simulate lead capture, account sync, campaign launches, task activity, catalog updates, case escalation, and outbound event delivery from one public site.
+            MockForge gives you fake Salesforce-style data for testing.
+            You do not need a Salesforce org, login, or setup. Pick a sample below and we show the JSON right away.
           </p>
 
           <div class="hero-pill-row">
-            <span>Leads + Accounts + Contacts</span>
-            <span>Opportunities + Cases + Tasks</span>
-            <span>Campaigns + Products + Users</span>
-            <span>Webhook echo</span>
-            <span>Outbound event sender</span>
+            <span>9 data types</span>
+            <span>50 sample records</span>
+            <span>One-click examples</span>
+            <span>Webhook testing</span>
+            <span>Free public API</span>
           </div>
 
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#playground">Open CRM Explorer</a>
-            <a class="btn btn-secondary" href="#webhook-lab">Launch Webhook Lab</a>
+            <a class="btn btn-primary" href="#start-here">Start Here</a>
+            <a class="btn btn-secondary" href="#webhook-lab">Test a Webhook</a>
           </div>
 
           <div class="hero-checks">
             <article>
-              <strong>Inbound integration testing</strong>
-              <p>Receive JSON into a public echo endpoint and inspect headers, payload shape, and webhook signatures.</p>
+              <strong>1. Pick a sample</strong>
+              <p>Choose Leads, Accounts, Tasks, Products, or another ready-made example.</p>
             </article>
             <article>
-              <strong>Outbound integration testing</strong>
-              <p>Send Salesforce-style mock events to a secure public callback URL and inspect the delivery response.</p>
+              <strong>2. See the JSON</strong>
+              <p>The response viewer fills in automatically so even new users can understand what the API returns.</p>
             </article>
           </div>
         </div>
@@ -81,28 +81,67 @@
 
           <div class="hero-metrics">
             <article>
-              <span>Object sets</span>
-              <strong>9 Salesforce-style types</strong>
+              <span>Data types</span>
+              <strong>9 simple collections</strong>
             </article>
             <article>
-              <span>Mock records</span>
-              <strong>50 linked fixtures</strong>
+              <span>Sample records</span>
+              <strong>50 linked records</strong>
             </article>
             <article>
-              <span>Event presets</span>
-              <strong>9 outbound scenarios</strong>
+              <span>Webhook events</span>
+              <strong>9 ready scenarios</strong>
             </article>
           </div>
 
           <pre class="snippet-block"><code id="hero-snippet"></code></pre>
 
           <div class="panel-meta">
-            <span>Salesforce-style IDs</span>
-            <span>Echo receiver</span>
-            <span>Event signatures</span>
-            <span>Cross-object fixtures</span>
+            <span>Copy and test</span>
+            <span>Use in Postman</span>
+            <span>Use in QA</span>
+            <span>Use in demos</span>
           </div>
         </aside>
+      </section>
+
+      <section class="start-section" id="start-here">
+        <div class="section-heading" data-reveal="up">
+          <p class="eyebrow">Start Here</p>
+          <h2>New here? Use one of these 4 buttons</h2>
+          <p>You do not need to understand every endpoint first. Start with one action below.</p>
+        </div>
+
+        <div class="start-grid">
+          <article class="start-card" data-reveal="up">
+            <span class="start-step">Step 1</span>
+            <h3>See all data types</h3>
+            <p>Open the summary and see everything this API includes.</p>
+            <button class="btn btn-primary" type="button" data-endpoint="/api/v1/salesforce/summary" data-scroll-target="#playground">Open Summary</button>
+          </article>
+
+          <article class="start-card" data-reveal="up">
+            <span class="start-step">Step 2</span>
+            <h3>Try sample JSON</h3>
+            <p>Load a beginner-friendly Lead response in one click.</p>
+            <button class="btn btn-primary" type="button" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc" data-scroll-target="#playground">Open Lead Data</button>
+          </article>
+
+          <article class="start-card" data-reveal="up">
+            <span class="start-step">Step 3</span>
+            <h3>Copy the API base URL</h3>
+            <p>Use the base URL in Postman, browser tests, or frontend demos.</p>
+            <button class="btn btn-secondary" id="copy-base-url" type="button">Copy Base URL</button>
+            <code class="start-code" id="base-url-label"></code>
+          </article>
+
+          <article class="start-card" data-reveal="up">
+            <span class="start-step">Step 4</span>
+            <h3>Test a webhook</h3>
+            <p>Jump straight to the inbound and outbound webhook tester.</p>
+            <a class="btn btn-secondary" href="#webhook-lab">Open Webhook Lab</a>
+          </article>
+        </div>
       </section>
 
       <section class="signal-strip" data-reveal="up">
@@ -122,10 +161,10 @@
 
       <section class="object-section" id="objects">
         <div class="section-heading" data-reveal="up">
-          <p class="eyebrow">CRM Objects</p>
-          <h2>Mock Salesforce records with enough shape to exercise real integration logic</h2>
+          <p class="eyebrow">Data Types</p>
+          <h2>Choose the kind of sample data you want</h2>
           <p>
-            These object collections are meant to stand in for integration reads, sync jobs, middleware mappings, activity automation, campaign attribution, product catalog sync, and ownership routing across Salesforce-adjacent systems.
+            Every card below opens real JSON in the viewer. Pick whichever type matches your testing need.
           </p>
         </div>
 
@@ -134,65 +173,65 @@
             <span class="object-count">6</span>
             <h3>Leads</h3>
             <p>Status, source, owner, revenue, website, and qualification state for inbound lead and lead-conversion flows.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc">View leads</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">5</span>
             <h3>Accounts</h3>
             <p>Industry, revenue, tier, country, and owner metadata for account sync, enrichment, and reporting tests.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/accounts?sort=name_asc">View accounts</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/accounts?sort=name_asc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">6</span>
             <h3>Contacts</h3>
             <p>Account-linked contacts with lifecycle state, title, activity timestamps, and ownership for person-level integrations.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/contacts?sort=updated_desc">View contacts</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/contacts?sort=updated_desc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">5</span>
             <h3>Opportunities</h3>
             <p>Stages, amounts, close dates, next steps, and probabilities for pipeline sync and closed-won scenarios.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">View opportunities</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">5</span>
             <h3>Cases</h3>
             <p>Priority, status, origin, SLA, and escalation states for support workflow and service integration tests.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/cases?sort=updated_desc">View cases</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/cases?sort=updated_desc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">5</span>
             <h3>Users</h3>
             <p>Active owner records with profile, role, region, and time-zone metadata for routing and ownership mapping tests.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/users?sort=name_asc">View users</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/users?sort=name_asc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">6</span>
             <h3>Campaigns</h3>
             <p>Budget, status, revenue targets, and date windows for attribution sync, launch notifications, and marketing ops flows.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc">View campaigns</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">6</span>
             <h3>Tasks</h3>
             <p>Activity records with due dates, priorities, owners, and related objects for workflow automation and SLA-style testing.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc">View tasks</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc" data-scroll-target="#playground">Open in viewer</button>
           </article>
           <article class="object-card" data-reveal="up">
             <span class="object-count">6</span>
             <h3>Products</h3>
             <p>Catalog data with family, product code, price, active state, and inventory labels for CPQ and sync fixtures.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/products?sort=price_desc">View products</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/products?sort=price_desc" data-scroll-target="#playground">Open in viewer</button>
           </article>
         </div>
       </section>
 
       <section class="section-grid" id="docs">
         <div class="section-heading" data-reveal="up">
-          <p class="eyebrow">Endpoints</p>
-          <h2>Read APIs, search, inbound receiver, and outbound event simulation</h2>
+          <p class="eyebrow">Easy Examples</p>
+          <h2>Try ready-made API requests</h2>
           <p>
-            The routes are organized for common Salesforce integration work: fetch records, search records, inspect ownership and activity data, receive callbacks, and send webhook-style mock events.
+            If you do not know which endpoint to use, click any example below. We will open it for you.
           </p>
         </div>
 
@@ -203,7 +242,7 @@
               <code>/api/v1/health</code>
             </div>
             <p>Check API status, version, dataset totals, and supported integration modes.</p>
-            <button class="inline-link" data-endpoint="/api/v1/health">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/health" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -212,7 +251,7 @@
               <code>/api/v1/salesforce/summary</code>
             </div>
             <p>Return totals for each CRM object and the supported outbound event presets.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/summary">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/summary" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -221,7 +260,7 @@
               <code>/api/v1/salesforce/leads?status=Working</code>
             </div>
             <p>List lead records for inbound capture, marketing sync, and conversion pipeline testing.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/leads?status=Working">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/leads?status=Working" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -230,7 +269,7 @@
               <code>/api/v1/salesforce/opportunities?sort=amount_desc</code>
             </div>
             <p>List opportunities by amount, stage, owner, region, or close date.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -239,7 +278,7 @@
               <code>/api/v1/salesforce/tasks?sort=duedate_asc</code>
             </div>
             <p>Inspect activity tasks by due date, owner, status, priority, or related object.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -248,7 +287,7 @@
               <code>/api/v1/salesforce/campaigns?sort=budget_desc</code>
             </div>
             <p>Explore campaign records by status, owner, region, and budget for attribution-style tests.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -257,7 +296,7 @@
               <code>/api/v1/salesforce/products?family=Integration&amp;sort=price_desc</code>
             </div>
             <p>Browse product catalog records by family, activity state, and price to simulate sync and CPQ reads.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/products?family=Integration&amp;sort=price_desc">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/products?family=Integration&amp;sort=price_desc" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -266,7 +305,7 @@
               <code>/api/v1/salesforce/search?type=campaigns&amp;q=global</code>
             </div>
             <p>Search within a chosen Salesforce-style object collection by partial text.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/search?type=campaigns&amp;q=global">Send request</button>
+            <button class="inline-link" type="button" data-endpoint="/api/v1/salesforce/search?type=campaigns&amp;q=global" data-scroll-target="#playground">Run example</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -291,28 +330,28 @@
 
       <section class="playground-section" id="playground">
         <div class="section-heading" data-reveal="up">
-          <p class="eyebrow">CRM Explorer</p>
-          <h2>Inspect the object API without leaving the page</h2>
+          <p class="eyebrow">API Viewer</p>
+          <h2>See the JSON here</h2>
           <p>
-            Choose any Salesforce-style route below and preview the response instantly. This is useful for QA walkthroughs, API onboarding, and frontend prototyping.
+            When you click a button anywhere on this page, the result appears here. You can also choose a request manually.
           </p>
         </div>
 
         <div class="quick-request-rail" data-reveal="up">
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/summary">Summary</button>
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc">Leads</button>
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/accounts?sort=name_asc">Accounts</button>
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc">Campaigns</button>
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc">Tasks</button>
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">Opportunities</button>
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/products?sort=price_desc">Products</button>
-          <button class="quick-request" data-endpoint="/api/v1/salesforce/cases?priority=High">High-Priority Cases</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/summary">Summary</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc">Leads</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/accounts?sort=name_asc">Accounts</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc">Campaigns</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc">Tasks</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">Opportunities</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/products?sort=price_desc">Products</button>
+          <button class="quick-request" type="button" data-endpoint="/api/v1/salesforce/cases?priority=High">High-Priority Cases</button>
         </div>
 
         <div class="playground-grid">
           <div class="playground-card controls-card" data-reveal="up">
             <form id="playground-form">
-              <label for="endpoint-select">Choose a request</label>
+              <label for="endpoint-select">Pick a request</label>
               <div class="control-row">
                 <select id="endpoint-select" name="endpoint">
                   <option value="/api/v1/health">/api/v1/health</option>
@@ -335,7 +374,7 @@
             </form>
 
             <div class="note-box">
-              <strong>Useful query params</strong>
+              <strong>Useful filters</strong>
               <p><code>limit</code>, <code>page</code>, <code>sort</code>, plus object-specific filters like <code>status</code>, <code>industry</code>, <code>accountName</code>, <code>priority</code>, <code>stage</code>, <code>owner</code>, <code>region</code>, <code>family</code>, <code>isActive</code>, <code>minBudget</code>, and <code>minUnitPrice</code>.</p>
             </div>
 
@@ -358,7 +397,7 @@
           <div class="playground-card response-card" data-reveal="left">
             <div class="response-top">
               <div>
-                <span class="response-label">Live JSON Response</span>
+                <span class="response-label">JSON Response</span>
                 <p id="response-path">/api/v1/salesforce/summary</p>
               </div>
               <span class="status-pill" id="status-pill">Ready</span>
@@ -371,9 +410,9 @@
       <section class="webhook-section" id="webhook-lab">
         <div class="section-heading" data-reveal="up">
           <p class="eyebrow">Webhook Lab</p>
-          <h2>Send outbound events and validate inbound webhook handling</h2>
+          <h2>Test webhook sending and receiving</h2>
           <p>
-            The lab below can post a Salesforce-style event to any public HTTPS webhook URL. By default, it targets MockForge's own echo receiver so you can test the full loop immediately.
+            Paste a public HTTPS webhook URL, choose an event, and press send. If you are not sure what to use, press the echo button and test with MockForge itself.
           </p>
         </div>
 
@@ -464,7 +503,7 @@
           <article class="code-card" data-reveal="up">
             <div class="code-card-top">
               <span>curl CRM</span>
-              <button class="ghost-button" data-copy-target="curl-example">Copy</button>
+              <button class="ghost-button" type="button" data-copy-target="curl-example">Copy</button>
             </div>
             <pre><code id="curl-example"></code></pre>
           </article>
@@ -472,7 +511,7 @@
           <article class="code-card" data-reveal="up">
             <div class="code-card-top">
               <span>JavaScript</span>
-              <button class="ghost-button" data-copy-target="fetch-example">Copy</button>
+              <button class="ghost-button" type="button" data-copy-target="fetch-example">Copy</button>
             </div>
             <pre><code id="fetch-example"></code></pre>
           </article>
@@ -480,7 +519,7 @@
           <article class="code-card" data-reveal="up">
             <div class="code-card-top">
               <span>Webhook POST</span>
-              <button class="ghost-button" data-copy-target="webhook-example">Copy</button>
+              <button class="ghost-button" type="button" data-copy-target="webhook-example">Copy</button>
             </div>
             <pre><code id="webhook-example"></code></pre>
           </article>

@@ -15,8 +15,11 @@ const destinationUrlInput = document.getElementById("destination-url");
 const useEchoButton = document.getElementById("use-echo-button");
 const webhookResponsePanel = document.getElementById("webhook-response-panel");
 const webhookStatusPill = document.getElementById("webhook-status-pill");
+const copyBaseUrlButton = document.getElementById("copy-base-url");
+const baseUrlLabel = document.getElementById("base-url-label");
 
 const origin = window.location.origin;
+const baseApiUrl = `${origin}/api/v1`;
 const defaultEndpoint = "/api/v1/salesforce/summary";
 const echoEndpoint = `${origin}/api/v1/webhooks/echo`;
 
@@ -104,7 +107,8 @@ async function loadEndpoint(endpoint) {
 }
 
 function handleEndpointButtonClick(event) {
-  const endpoint = event.currentTarget.getAttribute("data-endpoint");
+  const button = event.currentTarget;
+  const endpoint = button.getAttribute("data-endpoint");
   if (!endpoint) {
     return;
   }
@@ -112,6 +116,14 @@ function handleEndpointButtonClick(event) {
   const hasMatchingOption = Array.from(endpointSelect.options).some((option) => option.value === endpoint);
   if (hasMatchingOption) {
     endpointSelect.value = endpoint;
+  }
+
+  const scrollTarget = button.getAttribute("data-scroll-target");
+  if (scrollTarget) {
+    const target = document.querySelector(scrollTarget);
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
   }
 
   loadEndpoint(endpoint);
@@ -130,6 +142,23 @@ async function copySnippet(event) {
     event.currentTarget.textContent = "Copied";
     window.setTimeout(() => {
       event.currentTarget.textContent = previous;
+    }, 1200);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+async function copyBaseUrl() {
+  if (!copyBaseUrlButton) {
+    return;
+  }
+
+  try {
+    await navigator.clipboard.writeText(baseApiUrl);
+    const previous = copyBaseUrlButton.textContent;
+    copyBaseUrlButton.textContent = "Copied";
+    window.setTimeout(() => {
+      copyBaseUrlButton.textContent = previous;
     }, 1200);
   } catch (error) {
     console.error(error);
@@ -197,6 +226,12 @@ useEchoButton.addEventListener("click", () => {
 });
 
 destinationUrlInput.value = echoEndpoint;
+if (baseUrlLabel) {
+  baseUrlLabel.textContent = baseApiUrl;
+}
+if (copyBaseUrlButton) {
+  copyBaseUrlButton.addEventListener("click", copyBaseUrl);
+}
 updateExamples();
 window.setTimeout(() => {
   body.classList.add("is-ready");

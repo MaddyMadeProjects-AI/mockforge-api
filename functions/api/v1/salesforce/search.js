@@ -5,9 +5,15 @@ export function onRequest(context) {
     const url = new URL(context.request.url);
     const type = (url.searchParams.get("type") || "").toLowerCase();
     const query = url.searchParams.get("q") || "";
+    const supportedTypes = getRecordTypes();
 
-    if (!type || !getRecordTypes().includes(type)) {
-      return errorResponse(context.request, 400, "invalid_type", "Use a valid object type such as leads, accounts, contacts, opportunities, or cases.");
+    if (!type || !supportedTypes.includes(type)) {
+      return errorResponse(
+        context.request,
+        400,
+        "invalid_type",
+        `Use a valid object type such as ${supportedTypes.join(", ")}.`
+      );
     }
 
     if (!query.trim()) {

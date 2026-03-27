@@ -1,4 +1,4 @@
-export const apiVersion = "2.0.0";
+export const apiVersion = "2.1.0";
 
 export const crmData = {
   leads: [
@@ -399,6 +399,302 @@ export const crmData = {
       createdAt: "2026-03-19T15:35:00Z",
       updatedAt: "2026-03-20T06:18:00Z"
     }
+  ],
+  users: [
+    {
+      id: "005900000000001AAA",
+      name: "Priya Shah",
+      username: "priya.shah@mockforge.example",
+      email: "priya.shah@mockforge.example",
+      profile: "Sales Manager",
+      role: "North America Enterprise",
+      region: "North America",
+      timeZone: "America/New_York",
+      isActive: true,
+      updatedAt: "2026-03-26T08:20:00Z"
+    },
+    {
+      id: "005900000000002AAA",
+      name: "Marcus Cole",
+      username: "marcus.cole@mockforge.example",
+      email: "marcus.cole@mockforge.example",
+      profile: "Account Executive",
+      role: "APAC Mid-Market",
+      region: "APAC",
+      timeZone: "Asia/Kolkata",
+      isActive: true,
+      updatedAt: "2026-03-25T06:40:00Z"
+    },
+    {
+      id: "005900000000003AAA",
+      name: "Jules Carter",
+      username: "jules.carter@mockforge.example",
+      email: "jules.carter@mockforge.example",
+      profile: "Partner Director",
+      role: "EMEA Channel",
+      region: "EMEA",
+      timeZone: "Europe/London",
+      isActive: true,
+      updatedAt: "2026-03-24T14:05:00Z"
+    },
+    {
+      id: "005900000000004AAA",
+      name: "Tariq Hudson",
+      username: "tariq.hudson@mockforge.example",
+      email: "tariq.hudson@mockforge.example",
+      profile: "Growth Operations",
+      role: "APAC Growth",
+      region: "APAC",
+      timeZone: "Asia/Singapore",
+      isActive: true,
+      updatedAt: "2026-03-23T09:55:00Z"
+    },
+    {
+      id: "005900000000005AAA",
+      name: "Elena Brooks",
+      username: "elena.brooks@mockforge.example",
+      email: "elena.brooks@mockforge.example",
+      profile: "Support Manager",
+      role: "Global Integrations Support",
+      region: "Global",
+      timeZone: "America/Chicago",
+      isActive: true,
+      updatedAt: "2026-03-26T05:10:00Z"
+    }
+  ],
+  campaigns: [
+    {
+      id: "701900000000001AAA",
+      name: "Spring Lead Acceleration",
+      type: "Webinar",
+      status: "In Progress",
+      owner: "Tariq Hudson",
+      budgetedCost: 42000,
+      expectedRevenue: 230000,
+      region: "North America",
+      startDate: "2026-03-10",
+      endDate: "2026-04-21",
+      updatedAt: "2026-03-26T07:45:00Z"
+    },
+    {
+      id: "701900000000002AAA",
+      name: "BlueHarbor Retail Relaunch",
+      type: "Email",
+      status: "Planned",
+      owner: "Marcus Cole",
+      budgetedCost: 18000,
+      expectedRevenue: 82000,
+      region: "APAC",
+      startDate: "2026-04-05",
+      endDate: "2026-05-02",
+      updatedAt: "2026-03-21T10:05:00Z"
+    },
+    {
+      id: "701900000000003AAA",
+      name: "OrbitEdge Partner Summit",
+      type: "Conference",
+      status: "Completed",
+      owner: "Jules Carter",
+      budgetedCost: 65000,
+      expectedRevenue: 310000,
+      region: "EMEA",
+      startDate: "2026-02-12",
+      endDate: "2026-02-14",
+      updatedAt: "2026-03-18T16:30:00Z"
+    },
+    {
+      id: "701900000000004AAA",
+      name: "Health Grid Integration Roadshow",
+      type: "Field Event",
+      status: "In Progress",
+      owner: "Priya Shah",
+      budgetedCost: 54000,
+      expectedRevenue: 420000,
+      region: "North America",
+      startDate: "2026-03-18",
+      endDate: "2026-04-08",
+      updatedAt: "2026-03-25T17:20:00Z"
+    },
+    {
+      id: "701900000000005AAA",
+      name: "Cinder Cloud Product Education",
+      type: "Content Syndication",
+      status: "Aborted",
+      owner: "Tariq Hudson",
+      budgetedCost: 9000,
+      expectedRevenue: 26000,
+      region: "APAC",
+      startDate: "2026-02-28",
+      endDate: "2026-03-19",
+      updatedAt: "2026-03-19T13:55:00Z"
+    },
+    {
+      id: "701900000000006AAA",
+      name: "Global RevOps Demo Series",
+      type: "Demo Program",
+      status: "In Progress",
+      owner: "Elena Brooks",
+      budgetedCost: 27000,
+      expectedRevenue: 145000,
+      region: "Global",
+      startDate: "2026-03-15",
+      endDate: "2026-04-30",
+      updatedAt: "2026-03-26T09:25:00Z"
+    }
+  ],
+  tasks: [
+    {
+      id: "00T900000000001AAA",
+      subject: "Confirm lead enrichment field mapping",
+      status: "In Progress",
+      priority: "High",
+      owner: "Priya Shah",
+      relatedType: "Lead",
+      relatedId: "00Q900000000001AAA",
+      relatedName: "Avery Nguyen",
+      dueDate: "2026-03-29",
+      channel: "Integration Project",
+      updatedAt: "2026-03-26T08:00:00Z"
+    },
+    {
+      id: "00T900000000002AAA",
+      subject: "Review BlueHarbor campaign attribution payload",
+      status: "Not Started",
+      priority: "Normal",
+      owner: "Marcus Cole",
+      relatedType: "Campaign",
+      relatedId: "701900000000002AAA",
+      relatedName: "BlueHarbor Retail Relaunch",
+      dueDate: "2026-04-02",
+      channel: "Marketing Ops",
+      updatedAt: "2026-03-24T07:15:00Z"
+    },
+    {
+      id: "00T900000000003AAA",
+      subject: "Validate partner account hierarchy export",
+      status: "Completed",
+      priority: "Normal",
+      owner: "Jules Carter",
+      relatedType: "Account",
+      relatedId: "001900000000003AAA",
+      relatedName: "OrbitEdge Logistics",
+      dueDate: "2026-03-22",
+      channel: "Partner Sync",
+      updatedAt: "2026-03-22T17:20:00Z"
+    },
+    {
+      id: "00T900000000004AAA",
+      subject: "Attach product sample payload to integration case",
+      status: "Waiting on someone else",
+      priority: "Low",
+      owner: "Elena Brooks",
+      relatedType: "Case",
+      relatedId: "500900000000004AAA",
+      relatedName: "Case event payload needs custom field sample",
+      dueDate: "2026-03-31",
+      channel: "Support",
+      updatedAt: "2026-03-25T11:40:00Z"
+    },
+    {
+      id: "00T900000000005AAA",
+      subject: "Prepare closed-won outbound event test",
+      status: "In Progress",
+      priority: "High",
+      owner: "Priya Shah",
+      relatedType: "Opportunity",
+      relatedId: "006900000000004AAA",
+      relatedName: "Summit Health Grid Integration Hub",
+      dueDate: "2026-03-28",
+      channel: "Revenue Operations",
+      updatedAt: "2026-03-26T09:05:00Z"
+    },
+    {
+      id: "00T900000000006AAA",
+      subject: "Re-run outbound timeout scenario",
+      status: "Deferred",
+      priority: "High",
+      owner: "Tariq Hudson",
+      relatedType: "Case",
+      relatedId: "500900000000005AAA",
+      relatedName: "Outbound test event timed out at destination",
+      dueDate: "2026-04-03",
+      channel: "QA",
+      updatedAt: "2026-03-20T06:25:00Z"
+    }
+  ],
+  products: [
+    {
+      id: "01t900000000001AAA",
+      name: "Revenue Graph API",
+      productCode: "RGA-ENT",
+      family: "Platform",
+      unitPrice: 18000,
+      currencyIsoCode: "USD",
+      isActive: true,
+      skuTier: "Enterprise",
+      inventoryStatus: "Provisioned",
+      updatedAt: "2026-03-26T06:45:00Z"
+    },
+    {
+      id: "01t900000000002AAA",
+      name: "Webhook Shield",
+      productCode: "WHS-STD",
+      family: "Security",
+      unitPrice: 6400,
+      currencyIsoCode: "USD",
+      isActive: true,
+      skuTier: "Standard",
+      inventoryStatus: "Provisioned",
+      updatedAt: "2026-03-24T08:30:00Z"
+    },
+    {
+      id: "01t900000000003AAA",
+      name: "Partner Sync Cloud",
+      productCode: "PSC-ADV",
+      family: "Integration",
+      unitPrice: 12400,
+      currencyIsoCode: "USD",
+      isActive: true,
+      skuTier: "Advanced",
+      inventoryStatus: "Provisioned",
+      updatedAt: "2026-03-23T15:55:00Z"
+    },
+    {
+      id: "01t900000000004AAA",
+      name: "Case Command Center",
+      productCode: "CCC-ENT",
+      family: "Service",
+      unitPrice: 9200,
+      currencyIsoCode: "USD",
+      isActive: true,
+      skuTier: "Enterprise",
+      inventoryStatus: "Provisioned",
+      updatedAt: "2026-03-25T10:10:00Z"
+    },
+    {
+      id: "01t900000000005AAA",
+      name: "Lead Pulse Starter",
+      productCode: "LPS-SMB",
+      family: "Marketing",
+      unitPrice: 2400,
+      currencyIsoCode: "USD",
+      isActive: false,
+      skuTier: "Starter",
+      inventoryStatus: "Retired",
+      updatedAt: "2026-03-18T09:00:00Z"
+    },
+    {
+      id: "01t900000000006AAA",
+      name: "Data Cloud Mapper",
+      productCode: "DCM-PRO",
+      family: "Integration",
+      unitPrice: 15600,
+      currencyIsoCode: "USD",
+      isActive: true,
+      skuTier: "Professional",
+      inventoryStatus: "Provisioned",
+      updatedAt: "2026-03-26T09:30:00Z"
+    }
   ]
 };
 
@@ -408,7 +704,10 @@ export const eventPresets = {
   "account.updated": { recordType: "accounts", title: "Account profile updated in CRM" },
   "contact.synced": { recordType: "contacts", title: "Contact pushed to downstream system" },
   "opportunity.closed_won": { recordType: "opportunities", title: "Closed won opportunity sync" },
-  "case.escalated": { recordType: "cases", title: "Customer support case escalation" }
+  "case.escalated": { recordType: "cases", title: "Customer support case escalation" },
+  "task.completed": { recordType: "tasks", title: "Activity task completion event" },
+  "campaign.launched": { recordType: "campaigns", title: "Campaign activation and sync event" },
+  "product.updated": { recordType: "products", title: "Catalog product update event" }
 };
 
 const securityHeaders = {
@@ -429,7 +728,11 @@ const objectLabels = {
   accounts: "Account",
   contacts: "Contact",
   opportunities: "Opportunity",
-  cases: "Case"
+  cases: "Case",
+  users: "User",
+  campaigns: "Campaign",
+  tasks: "Task",
+  products: "Product"
 };
 
 export function buildHeaders(contentType, cacheControl = "no-store", extraHeaders = {}) {
@@ -513,16 +816,24 @@ export function handlePostRequest(request, handler, allowGet = false) {
 }
 
 export function getSummaryPayload() {
+  const totals = Object.fromEntries(
+    getRecordTypes().map((type) => [type, crmData[type].length])
+  );
+
   return {
     totals: {
-      leads: crmData.leads.length,
-      accounts: crmData.accounts.length,
-      contacts: crmData.contacts.length,
-      opportunities: crmData.opportunities.length,
-      cases: crmData.cases.length,
+      ...totals,
+      objectTypes: getRecordTypes().length,
+      totalRecords: Object.values(totals).reduce((sum, count) => sum + count, 0),
       eventPresets: Object.keys(eventPresets).length
     },
-    supportedEvents: Object.keys(eventPresets)
+    supportedEvents: Object.keys(eventPresets),
+    objects: getRecordTypes().map((type) => ({
+      type,
+      label: getObjectLabel(type),
+      total: crmData[type].length,
+      path: `/api/v1/salesforce/${type}`
+    }))
   };
 }
 
@@ -561,6 +872,34 @@ export function listRecords(type, searchParams) {
 
       if (key === "maxAmount") {
         return Number(item.amount || 0) <= Number(value);
+      }
+
+      if (key === "minAnnualRevenue") {
+        return Number(item.annualRevenue || 0) >= Number(value);
+      }
+
+      if (key === "maxAnnualRevenue") {
+        return Number(item.annualRevenue || 0) <= Number(value);
+      }
+
+      if (key === "minBudget") {
+        return Number(item.budgetedCost || 0) >= Number(value);
+      }
+
+      if (key === "maxBudget") {
+        return Number(item.budgetedCost || 0) <= Number(value);
+      }
+
+      if (key === "minUnitPrice") {
+        return Number(item.unitPrice || 0) >= Number(value);
+      }
+
+      if (key === "maxUnitPrice") {
+        return Number(item.unitPrice || 0) <= Number(value);
+      }
+
+      if (key === "isActive") {
+        return String(Boolean(item.isActive)) === normalize(value);
       }
 
       return normalize(item[key]).includes(normalized);
@@ -718,11 +1057,23 @@ function applySort(items, sort) {
     case "amount_desc":
       items.sort((left, right) => Number(right.amount || 0) - Number(left.amount || 0));
       return "amount_desc";
+    case "revenue_desc":
+      items.sort((left, right) => Number(right.annualRevenue || 0) - Number(left.annualRevenue || 0));
+      return "revenue_desc";
+    case "budget_desc":
+      items.sort((left, right) => Number(right.budgetedCost || 0) - Number(left.budgetedCost || 0));
+      return "budget_desc";
+    case "price_desc":
+      items.sort((left, right) => Number(right.unitPrice || 0) - Number(left.unitPrice || 0));
+      return "price_desc";
+    case "duedate_asc":
+      items.sort((left, right) => normalize(left.dueDate).localeCompare(normalize(right.dueDate)));
+      return "dueDate_asc";
     case "closedate_asc":
       items.sort((left, right) => normalize(left.closeDate).localeCompare(normalize(right.closeDate)));
       return "closeDate_asc";
     default:
-      items.sort((left, right) => normalize(right.updatedAt || right.lastActivityAt || right.createdAt).localeCompare(normalize(left.updatedAt || left.lastActivityAt || left.createdAt)));
+      items.sort((left, right) => normalize(right.updatedAt || right.lastActivityAt || right.createdAt || right.endDate).localeCompare(normalize(left.updatedAt || left.lastActivityAt || left.createdAt || left.endDate)));
       return "updated_desc";
   }
 }

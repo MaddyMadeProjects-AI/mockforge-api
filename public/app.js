@@ -24,23 +24,23 @@ function updateExamples() {
   heroSnippet.textContent = [
     "{",
     '  "eventId": "evt_3bafd2f3-....",',
-    '  "eventType": "opportunity.closed_won",',
+    '  "eventType": "campaign.launched",',
     '  "source": "MockForge Salesforce Lab",',
-    '  "objectType": "Opportunity",',
-    '  "recordId": "006900000000004AAA",',
+    '  "objectType": "Campaign",',
+    '  "recordId": "701900000000006AAA",',
     '  "data": {',
-    '    "name": "Summit Health Grid Integration Hub",',
-    '    "stage": "Closed Won",',
-    '    "amount": 480000',
+    '    "name": "Global RevOps Demo Series",',
+    '    "status": "In Progress",',
+    '    "expectedRevenue": 145000',
     "  }",
     "}"
   ].join("\n");
 
-  curlExample.textContent = `curl "${origin}/api/v1/salesforce/leads?sort=updated_desc"`;
+  curlExample.textContent = `curl "${origin}/api/v1/salesforce/products?family=Integration&sort=price_desc"`;
 
   fetchExample.textContent = [
     "const response = await fetch(",
-    `  "${origin}/api/v1/salesforce/search?type=contacts&q=avery"`,
+    `  "${origin}/api/v1/salesforce/search?type=campaigns&q=global"`,
     ");",
     "",
     "const payload = await response.json();",
@@ -53,7 +53,7 @@ function updateExamples() {
     '  -H "Content-Type: application/json" \\',
     "  -d '{",
     `    "destinationUrl": "${echoEndpoint}",`,
-    '    "eventType": "lead.created",',
+    '    "eventType": "campaign.launched",',
     '    "includeRecord": true',
     "  }'"
   ].join("\n");
@@ -205,7 +205,7 @@ loadEndpoint(defaultEndpoint);
 webhookResponsePanel.textContent = JSON.stringify(
   {
     destinationUrl: echoEndpoint,
-    note: "Use the form to send a Salesforce-style mock event to the default echo receiver or your own public HTTPS webhook URL."
+    note: "Use the form to send one of the Salesforce-style mock events to the default echo receiver or your own public HTTPS webhook URL."
   },
   null,
   2

@@ -508,7 +508,7 @@ h3 {
 }
 
 .object-grid {
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
 }
 
 .object-card,
@@ -537,7 +537,7 @@ h3 {
 }
 
 .endpoint-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .endpoint-top {
@@ -809,12 +809,6 @@ body.is-ready [data-reveal="left"] {
   }
   100% {
     box-shadow: 0 0 0 0 rgba(29, 106, 85, 0);
-  }
-}
-
-@media (max-width: 1180px) {
-  .object-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 

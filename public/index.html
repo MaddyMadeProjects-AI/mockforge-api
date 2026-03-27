@@ -42,13 +42,13 @@
           <h1>Test inbound and outbound Salesforce integrations without touching a real org.</h1>
           <p class="hero-text">
             MockForge Salesforce Lab gives developers, QA teams, and middleware builders a clean CRM object API plus a webhook test bench.
-            Use it to simulate lead capture, account sync, opportunity updates, case escalation, and outbound event delivery from one public site.
+            Use it to simulate lead capture, account sync, campaign launches, task activity, catalog updates, case escalation, and outbound event delivery from one public site.
           </p>
 
           <div class="hero-pill-row">
-            <span>Leads + Accounts</span>
-            <span>Contacts + Opportunities</span>
-            <span>Cases + Search</span>
+            <span>Leads + Accounts + Contacts</span>
+            <span>Opportunities + Cases + Tasks</span>
+            <span>Campaigns + Products + Users</span>
             <span>Webhook echo</span>
             <span>Outbound event sender</span>
           </div>
@@ -82,15 +82,15 @@
           <div class="hero-metrics">
             <article>
               <span>Object sets</span>
-              <strong>5 core CRM types</strong>
+              <strong>9 Salesforce-style types</strong>
             </article>
             <article>
-              <span>Integration modes</span>
-              <strong>Inbound + outbound</strong>
+              <span>Mock records</span>
+              <strong>50 linked fixtures</strong>
             </article>
             <article>
-              <span>Hosting model</span>
-              <strong>Cloudflare free tier</strong>
+              <span>Event presets</span>
+              <strong>9 outbound scenarios</strong>
             </article>
           </div>
 
@@ -100,6 +100,7 @@
             <span>Salesforce-style IDs</span>
             <span>Echo receiver</span>
             <span>Event signatures</span>
+            <span>Cross-object fixtures</span>
           </div>
         </aside>
       </section>
@@ -107,7 +108,7 @@
       <section class="signal-strip" data-reveal="up">
         <article>
           <strong>Salesforce-shaped records</strong>
-          <p>Lead, Account, Contact, Opportunity, and Case datasets with realistic IDs, statuses, owners, and lifecycle fields.</p>
+          <p>Lead, Account, Contact, Opportunity, Case, Task, Campaign, Product, and User datasets with realistic IDs and linked relationships.</p>
         </article>
         <article>
           <strong>Webhook safety rails</strong>
@@ -115,7 +116,7 @@
         </article>
         <article>
           <strong>Fast for demos and QA</strong>
-          <p>Everything is public, immediate, and documentation-friendly, so teams can test flows without a heavy sandbox setup.</p>
+          <p>Everything is public, immediate, and documentation-friendly, so teams can test mappings, filters, and payload logic without a heavy sandbox setup.</p>
         </article>
       </section>
 
@@ -124,7 +125,7 @@
           <p class="eyebrow">CRM Objects</p>
           <h2>Mock Salesforce records with enough shape to exercise real integration logic</h2>
           <p>
-            These object collections are meant to stand in for integration reads, sync jobs, middleware mappings, and test fixtures across Salesforce-adjacent systems.
+            These object collections are meant to stand in for integration reads, sync jobs, middleware mappings, activity automation, campaign attribution, product catalog sync, and ownership routing across Salesforce-adjacent systems.
           </p>
         </div>
 
@@ -159,6 +160,30 @@
             <p>Priority, status, origin, SLA, and escalation states for support workflow and service integration tests.</p>
             <button class="inline-link" data-endpoint="/api/v1/salesforce/cases?sort=updated_desc">View cases</button>
           </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">5</span>
+            <h3>Users</h3>
+            <p>Active owner records with profile, role, region, and time-zone metadata for routing and ownership mapping tests.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/users?sort=name_asc">View users</button>
+          </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">6</span>
+            <h3>Campaigns</h3>
+            <p>Budget, status, revenue targets, and date windows for attribution sync, launch notifications, and marketing ops flows.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc">View campaigns</button>
+          </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">6</span>
+            <h3>Tasks</h3>
+            <p>Activity records with due dates, priorities, owners, and related objects for workflow automation and SLA-style testing.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc">View tasks</button>
+          </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">6</span>
+            <h3>Products</h3>
+            <p>Catalog data with family, product code, price, active state, and inventory labels for CPQ and sync fixtures.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/products?sort=price_desc">View products</button>
+          </article>
         </div>
       </section>
 
@@ -167,7 +192,7 @@
           <p class="eyebrow">Endpoints</p>
           <h2>Read APIs, search, inbound receiver, and outbound event simulation</h2>
           <p>
-            The routes are organized for common Salesforce integration work: fetch records, search records, receive callbacks, and send webhook-style mock events.
+            The routes are organized for common Salesforce integration work: fetch records, search records, inspect ownership and activity data, receive callbacks, and send webhook-style mock events.
           </p>
         </div>
 
@@ -211,10 +236,37 @@
           <article class="endpoint-card" data-reveal="up">
             <div class="endpoint-top">
               <span class="method">GET</span>
-              <code>/api/v1/salesforce/search?type=contacts&amp;q=avery</code>
+              <code>/api/v1/salesforce/tasks?sort=duedate_asc</code>
+            </div>
+            <p>Inspect activity tasks by due date, owner, status, priority, or related object.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/salesforce/campaigns?sort=budget_desc</code>
+            </div>
+            <p>Explore campaign records by status, owner, region, and budget for attribution-style tests.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/salesforce/products?family=Integration&amp;sort=price_desc</code>
+            </div>
+            <p>Browse product catalog records by family, activity state, and price to simulate sync and CPQ reads.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/products?family=Integration&amp;sort=price_desc">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/salesforce/search?type=campaigns&amp;q=global</code>
             </div>
             <p>Search within a chosen Salesforce-style object collection by partial text.</p>
-            <button class="inline-link" data-endpoint="/api/v1/salesforce/search?type=contacts&amp;q=avery">Send request</button>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/search?type=campaigns&amp;q=global">Send request</button>
           </article>
 
           <article class="endpoint-card" data-reveal="up">
@@ -250,7 +302,10 @@
           <button class="quick-request" data-endpoint="/api/v1/salesforce/summary">Summary</button>
           <button class="quick-request" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc">Leads</button>
           <button class="quick-request" data-endpoint="/api/v1/salesforce/accounts?sort=name_asc">Accounts</button>
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/campaigns?sort=budget_desc">Campaigns</button>
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/tasks?sort=duedate_asc">Tasks</button>
           <button class="quick-request" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">Opportunities</button>
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/products?sort=price_desc">Products</button>
           <button class="quick-request" data-endpoint="/api/v1/salesforce/cases?priority=High">High-Priority Cases</button>
         </div>
 
@@ -267,8 +322,13 @@
                   <option value="/api/v1/salesforce/contacts?accountName=Northwind">/api/v1/salesforce/contacts?accountName=Northwind</option>
                   <option value="/api/v1/salesforce/opportunities?sort=amount_desc">/api/v1/salesforce/opportunities?sort=amount_desc</option>
                   <option value="/api/v1/salesforce/cases?priority=High">/api/v1/salesforce/cases?priority=High</option>
+                  <option value="/api/v1/salesforce/users?region=APAC">/api/v1/salesforce/users?region=APAC</option>
+                  <option value="/api/v1/salesforce/campaigns?sort=budget_desc">/api/v1/salesforce/campaigns?sort=budget_desc</option>
+                  <option value="/api/v1/salesforce/tasks?sort=duedate_asc">/api/v1/salesforce/tasks?sort=duedate_asc</option>
+                  <option value="/api/v1/salesforce/products?sort=price_desc">/api/v1/salesforce/products?sort=price_desc</option>
                   <option value="/api/v1/salesforce/leads/00Q900000000001AAA">/api/v1/salesforce/leads/00Q900000000001AAA</option>
-                  <option value="/api/v1/salesforce/search?type=contacts&q=avery">/api/v1/salesforce/search?type=contacts&amp;q=avery</option>
+                  <option value="/api/v1/salesforce/products/01t900000000001AAA">/api/v1/salesforce/products/01t900000000001AAA</option>
+                  <option value="/api/v1/salesforce/search?type=campaigns&q=global">/api/v1/salesforce/search?type=campaigns&amp;q=global</option>
                 </select>
                 <button class="btn btn-primary" type="submit">Send Request</button>
               </div>
@@ -276,7 +336,7 @@
 
             <div class="note-box">
               <strong>Useful query params</strong>
-              <p><code>limit</code>, <code>page</code>, <code>sort</code>, plus object-specific filters like <code>status</code>, <code>industry</code>, <code>accountName</code>, <code>priority</code>, <code>stage</code>, and <code>owner</code>.</p>
+              <p><code>limit</code>, <code>page</code>, <code>sort</code>, plus object-specific filters like <code>status</code>, <code>industry</code>, <code>accountName</code>, <code>priority</code>, <code>stage</code>, <code>owner</code>, <code>region</code>, <code>family</code>, <code>isActive</code>, <code>minBudget</code>, and <code>minUnitPrice</code>.</p>
             </div>
 
             <div class="security-list">
@@ -333,6 +393,9 @@
                     <option value="contact.synced">contact.synced</option>
                     <option value="opportunity.closed_won">opportunity.closed_won</option>
                     <option value="case.escalated">case.escalated</option>
+                    <option value="task.completed">task.completed</option>
+                    <option value="campaign.launched">campaign.launched</option>
+                    <option value="product.updated">product.updated</option>
                   </select>
                 </div>
 

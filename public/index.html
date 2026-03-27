@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MockForge Salesforce Lab | Free Inbound and Outbound Integration Testing</title>
+  <meta name="description" content="MockForge Salesforce Lab provides free Salesforce-style CRM APIs, inbound webhook receivers, and outbound event simulation for integration testing.">
+  <link rel="icon" type="image/svg+xml" href="/assets/mockforge-mark.svg">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="page-shell">
+    <div class="ambient-grid" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <a class="brand" href="/">
+        <img src="/assets/mockforge-mark.svg" alt="MockForge Salesforce Lab">
+        <div class="brand-copy">
+          <span>MockForge Salesforce Lab</span>
+          <small>Inbound + outbound integration testing</small>
+        </div>
+      </a>
+
+      <nav class="topnav">
+        <a href="#objects">CRM Objects</a>
+        <a href="#docs">Endpoints</a>
+        <a href="#playground">Explorer</a>
+        <a href="#webhook-lab">Webhook Lab</a>
+        <a href="#examples">Examples</a>
+      </nav>
+
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span>Salesforce-focused</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy" data-reveal="up">
+          <p class="eyebrow">Free Salesforce-style integration sandbox</p>
+          <h1>Test inbound and outbound Salesforce integrations without touching a real org.</h1>
+          <p class="hero-text">
+            MockForge Salesforce Lab gives developers, QA teams, and middleware builders a clean CRM object API plus a webhook test bench.
+            Use it to simulate lead capture, account sync, opportunity updates, case escalation, and outbound event delivery from one public site.
+          </p>
+
+          <div class="hero-pill-row">
+            <span>Leads + Accounts</span>
+            <span>Contacts + Opportunities</span>
+            <span>Cases + Search</span>
+            <span>Webhook echo</span>
+            <span>Outbound event sender</span>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#playground">Open CRM Explorer</a>
+            <a class="btn btn-secondary" href="#webhook-lab">Launch Webhook Lab</a>
+          </div>
+
+          <div class="hero-checks">
+            <article>
+              <strong>Inbound integration testing</strong>
+              <p>Receive JSON into a public echo endpoint and inspect headers, payload shape, and webhook signatures.</p>
+            </article>
+            <article>
+              <strong>Outbound integration testing</strong>
+              <p>Send Salesforce-style mock events to a secure public callback URL and inspect the delivery response.</p>
+            </article>
+          </div>
+        </div>
+
+        <aside class="hero-panel" data-reveal="left">
+          <div class="hero-panel-top">
+            <div>
+              <div class="panel-label">Sample Event</div>
+              <strong>Outbound Salesforce payload preview</strong>
+            </div>
+            <span class="mini-pill">POST /api/v1/salesforce/events/mock</span>
+          </div>
+
+          <div class="hero-metrics">
+            <article>
+              <span>Object sets</span>
+              <strong>5 core CRM types</strong>
+            </article>
+            <article>
+              <span>Integration modes</span>
+              <strong>Inbound + outbound</strong>
+            </article>
+            <article>
+              <span>Hosting model</span>
+              <strong>Cloudflare free tier</strong>
+            </article>
+          </div>
+
+          <pre class="snippet-block"><code id="hero-snippet"></code></pre>
+
+          <div class="panel-meta">
+            <span>Salesforce-style IDs</span>
+            <span>Echo receiver</span>
+            <span>Event signatures</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="signal-strip" data-reveal="up">
+        <article>
+          <strong>Salesforce-shaped records</strong>
+          <p>Lead, Account, Contact, Opportunity, and Case datasets with realistic IDs, statuses, owners, and lifecycle fields.</p>
+        </article>
+        <article>
+          <strong>Webhook safety rails</strong>
+          <p>Outbound delivery is limited to public HTTPS targets with basic private-network blocking to reduce abuse risk.</p>
+        </article>
+        <article>
+          <strong>Fast for demos and QA</strong>
+          <p>Everything is public, immediate, and documentation-friendly, so teams can test flows without a heavy sandbox setup.</p>
+        </article>
+      </section>
+
+      <section class="object-section" id="objects">
+        <div class="section-heading" data-reveal="up">
+          <p class="eyebrow">CRM Objects</p>
+          <h2>Mock Salesforce records with enough shape to exercise real integration logic</h2>
+          <p>
+            These object collections are meant to stand in for integration reads, sync jobs, middleware mappings, and test fixtures across Salesforce-adjacent systems.
+          </p>
+        </div>
+
+        <div class="object-grid">
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">6</span>
+            <h3>Leads</h3>
+            <p>Status, source, owner, revenue, website, and qualification state for inbound lead and lead-conversion flows.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc">View leads</button>
+          </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">5</span>
+            <h3>Accounts</h3>
+            <p>Industry, revenue, tier, country, and owner metadata for account sync, enrichment, and reporting tests.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/accounts?sort=name_asc">View accounts</button>
+          </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">6</span>
+            <h3>Contacts</h3>
+            <p>Account-linked contacts with lifecycle state, title, activity timestamps, and ownership for person-level integrations.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/contacts?sort=updated_desc">View contacts</button>
+          </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">5</span>
+            <h3>Opportunities</h3>
+            <p>Stages, amounts, close dates, next steps, and probabilities for pipeline sync and closed-won scenarios.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">View opportunities</button>
+          </article>
+          <article class="object-card" data-reveal="up">
+            <span class="object-count">5</span>
+            <h3>Cases</h3>
+            <p>Priority, status, origin, SLA, and escalation states for support workflow and service integration tests.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/cases?sort=updated_desc">View cases</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="section-grid" id="docs">
+        <div class="section-heading" data-reveal="up">
+          <p class="eyebrow">Endpoints</p>
+          <h2>Read APIs, search, inbound receiver, and outbound event simulation</h2>
+          <p>
+            The routes are organized for common Salesforce integration work: fetch records, search records, receive callbacks, and send webhook-style mock events.
+          </p>
+        </div>
+
+        <div class="endpoint-grid">
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/health</code>
+            </div>
+            <p>Check API status, version, dataset totals, and supported integration modes.</p>
+            <button class="inline-link" data-endpoint="/api/v1/health">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/salesforce/summary</code>
+            </div>
+            <p>Return totals for each CRM object and the supported outbound event presets.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/summary">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/salesforce/leads?status=Working</code>
+            </div>
+            <p>List lead records for inbound capture, marketing sync, and conversion pipeline testing.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/leads?status=Working">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/salesforce/opportunities?sort=amount_desc</code>
+            </div>
+            <p>List opportunities by amount, stage, owner, region, or close date.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">GET</span>
+              <code>/api/v1/salesforce/search?type=contacts&amp;q=avery</code>
+            </div>
+            <p>Search within a chosen Salesforce-style object collection by partial text.</p>
+            <button class="inline-link" data-endpoint="/api/v1/salesforce/search?type=contacts&amp;q=avery">Send request</button>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">POST</span>
+              <code>/api/v1/webhooks/echo</code>
+            </div>
+            <p>Public inbound receiver that echoes the payload and selected headers for webhook validation.</p>
+            <a class="inline-link" href="#webhook-lab">Open webhook lab</a>
+          </article>
+
+          <article class="endpoint-card" data-reveal="up">
+            <div class="endpoint-top">
+              <span class="method">POST</span>
+              <code>/api/v1/salesforce/events/mock</code>
+            </div>
+            <p>Send a Salesforce-style test event to a secure HTTPS destination and inspect the delivery result.</p>
+            <a class="inline-link" href="#webhook-lab">Send mock event</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="playground-section" id="playground">
+        <div class="section-heading" data-reveal="up">
+          <p class="eyebrow">CRM Explorer</p>
+          <h2>Inspect the object API without leaving the page</h2>
+          <p>
+            Choose any Salesforce-style route below and preview the response instantly. This is useful for QA walkthroughs, API onboarding, and frontend prototyping.
+          </p>
+        </div>
+
+        <div class="quick-request-rail" data-reveal="up">
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/summary">Summary</button>
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc">Leads</button>
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/accounts?sort=name_asc">Accounts</button>
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/opportunities?sort=amount_desc">Opportunities</button>
+          <button class="quick-request" data-endpoint="/api/v1/salesforce/cases?priority=High">High-Priority Cases</button>
+        </div>
+
+        <div class="playground-grid">
+          <div class="playground-card controls-card" data-reveal="up">
+            <form id="playground-form">
+              <label for="endpoint-select">Choose a request</label>
+              <div class="control-row">
+                <select id="endpoint-select" name="endpoint">
+                  <option value="/api/v1/health">/api/v1/health</option>
+                  <option value="/api/v1/salesforce/summary">/api/v1/salesforce/summary</option>
+                  <option value="/api/v1/salesforce/leads?sort=updated_desc">/api/v1/salesforce/leads?sort=updated_desc</option>
+                  <option value="/api/v1/salesforce/accounts?industry=SaaS">/api/v1/salesforce/accounts?industry=SaaS</option>
+                  <option value="/api/v1/salesforce/contacts?accountName=Northwind">/api/v1/salesforce/contacts?accountName=Northwind</option>
+                  <option value="/api/v1/salesforce/opportunities?sort=amount_desc">/api/v1/salesforce/opportunities?sort=amount_desc</option>
+                  <option value="/api/v1/salesforce/cases?priority=High">/api/v1/salesforce/cases?priority=High</option>
+                  <option value="/api/v1/salesforce/leads/00Q900000000001AAA">/api/v1/salesforce/leads/00Q900000000001AAA</option>
+                  <option value="/api/v1/salesforce/search?type=contacts&q=avery">/api/v1/salesforce/search?type=contacts&amp;q=avery</option>
+                </select>
+                <button class="btn btn-primary" type="submit">Send Request</button>
+              </div>
+            </form>
+
+            <div class="note-box">
+              <strong>Useful query params</strong>
+              <p><code>limit</code>, <code>page</code>, <code>sort</code>, plus object-specific filters like <code>status</code>, <code>industry</code>, <code>accountName</code>, <code>priority</code>, <code>stage</code>, and <code>owner</code>.</p>
+            </div>
+
+            <div class="security-list">
+              <article>
+                <strong>CRM-style object model</strong>
+                <p>Designed around common Salesforce integration entities and mapping patterns.</p>
+              </article>
+              <article>
+                <strong>Public read endpoints</strong>
+                <p>Simple GET routes make it easy to use in demos, Postman, Playwright, and frontend data explorers.</p>
+              </article>
+              <article>
+                <strong>Stable test identifiers</strong>
+                <p>Salesforce-like IDs make callback tests and record references feel more realistic.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="playground-card response-card" data-reveal="left">
+            <div class="response-top">
+              <div>
+                <span class="response-label">Live JSON Response</span>
+                <p id="response-path">/api/v1/salesforce/summary</p>
+              </div>
+              <span class="status-pill" id="status-pill">Ready</span>
+            </div>
+            <pre id="response-panel" class="response-panel"></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="webhook-section" id="webhook-lab">
+        <div class="section-heading" data-reveal="up">
+          <p class="eyebrow">Webhook Lab</p>
+          <h2>Send outbound events and validate inbound webhook handling</h2>
+          <p>
+            The lab below can post a Salesforce-style event to any public HTTPS webhook URL. By default, it targets MockForge's own echo receiver so you can test the full loop immediately.
+          </p>
+        </div>
+
+        <div class="webhook-grid">
+          <div class="playground-card webhook-form-card" data-reveal="up">
+            <form id="webhook-form">
+              <label for="destination-url">Destination URL</label>
+              <input id="destination-url" name="destinationUrl" type="url" placeholder="https://example.com/webhook" required>
+
+              <div class="form-split">
+                <div>
+                  <label for="event-type">Mock event</label>
+                  <select id="event-type" name="eventType">
+                    <option value="lead.created">lead.created</option>
+                    <option value="lead.converted">lead.converted</option>
+                    <option value="account.updated">account.updated</option>
+                    <option value="contact.synced">contact.synced</option>
+                    <option value="opportunity.closed_won">opportunity.closed_won</option>
+                    <option value="case.escalated">case.escalated</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label for="record-id">Record ID</label>
+                  <input id="record-id" name="recordId" type="text" placeholder="Optional specific record ID">
+                </div>
+              </div>
+
+              <div class="form-split">
+                <div>
+                  <label for="webhook-secret">Signing secret</label>
+                  <input id="webhook-secret" name="secret" type="text" placeholder="Optional signature secret">
+                </div>
+
+                <label class="checkbox-field" for="include-record">
+                  <input id="include-record" name="includeRecord" type="checkbox" checked>
+                  <span>Include full record payload</span>
+                </label>
+              </div>
+
+              <div class="hero-actions webhook-actions">
+                <button class="btn btn-primary" type="submit">Send Mock Event</button>
+                <button class="btn btn-secondary" id="use-echo-button" type="button">Use Echo Receiver</button>
+              </div>
+            </form>
+
+            <div class="note-box">
+              <strong>Inbound receiver</strong>
+              <p><code>/api/v1/webhooks/echo</code> accepts <code>POST</code> JSON and returns the received payload plus selected request headers.</p>
+            </div>
+
+            <div class="security-list">
+              <article>
+                <strong>HTTPS-only outbound delivery</strong>
+                <p>Mock events only send to public HTTPS URLs. Obvious local/private destinations are blocked.</p>
+              </article>
+              <article>
+                <strong>Signature support</strong>
+                <p>If you provide a secret, the sender adds an <code>X-MockForge-Signature</code> HMAC header.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="playground-card response-card" data-reveal="left">
+            <div class="response-top">
+              <div>
+                <span class="response-label">Webhook Delivery Result</span>
+                <p id="webhook-path">POST /api/v1/salesforce/events/mock</p>
+              </div>
+              <span class="status-pill" id="webhook-status-pill">Ready</span>
+            </div>
+            <pre id="webhook-response-panel" class="response-panel"></pre>
+          </div>
+        </div>
+      </section>
+
+      <section class="examples-grid" id="examples">
+        <div class="section-heading" data-reveal="up">
+          <p class="eyebrow">Examples</p>
+          <h2>Use it from scripts, tests, middleware, or webhook debuggers</h2>
+          <p>The examples below automatically point at the domain you loaded this page from.</p>
+        </div>
+
+        <div class="code-grid">
+          <article class="code-card" data-reveal="up">
+            <div class="code-card-top">
+              <span>curl CRM</span>
+              <button class="ghost-button" data-copy-target="curl-example">Copy</button>
+            </div>
+            <pre><code id="curl-example"></code></pre>
+          </article>
+
+          <article class="code-card" data-reveal="up">
+            <div class="code-card-top">
+              <span>JavaScript</span>
+              <button class="ghost-button" data-copy-target="fetch-example">Copy</button>
+            </div>
+            <pre><code id="fetch-example"></code></pre>
+          </article>
+
+          <article class="code-card" data-reveal="up">
+            <div class="code-card-top">
+              <span>Webhook POST</span>
+              <button class="ghost-button" data-copy-target="webhook-example">Copy</button>
+            </div>
+            <pre><code id="webhook-example"></code></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" data-reveal="up">
+      <div class="footer-brand">
+        <img src="/assets/mockforge-mark.svg" alt="MockForge Salesforce Lab">
+        <div>
+          <strong>MockForge Salesforce Lab</strong>
+          <p>Free Salesforce-style APIs and webhook tools for integration testing, demos, and QA.</p>
+        </div>
+      </div>
+
+      <div class="footer-copy">
+        <p>Use the built-in CRM records or adapt the structure for your own connectors, middleware payloads, and callback patterns.</p>
+      </div>
+    </footer>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>

@@ -17,7 +17,7 @@
         <img src="/assets/mockforge-mark.svg" alt="MockForge Salesforce Lab">
         <div class="brand-copy">
           <span>MockForge Salesforce Lab</span>
-          <small>Inbound + outbound integration testing</small>
+          <small>Free mock API for Salesforce-style testing</small>
         </div>
       </a>
 
@@ -29,20 +29,23 @@
         <a href="#examples">Examples</a>
       </nav>
 
-      <div class="status-badge">
-        <span class="status-dot"></span>
-        <span>Salesforce-focused</span>
+      <div class="topbar-side">
+        <div class="status-badge">
+          <span class="status-dot"></span>
+          <span>Live and free</span>
+        </div>
+        <a class="btn btn-secondary topbar-cta" href="#start-here">Try It Now</a>
       </div>
     </header>
 
     <main>
       <section class="hero">
         <div class="hero-copy" data-reveal="up">
-          <p class="eyebrow">Free Salesforce-style API testing website</p>
-          <h1>Click a button, get clean test data, and start using the API.</h1>
+          <p class="eyebrow">Modern mock API for Salesforce-style testing</p>
+          <h1>A cleaner way to test data, endpoints, and webhooks.</h1>
           <p class="hero-text">
-            MockForge gives you fake Salesforce-style data for testing.
-            You do not need a Salesforce org, login, or setup. Pick a sample below and we show the JSON right away.
+            Open a sample, see the JSON instantly, copy the endpoint, and move on.
+            No login, no Salesforce org, and no setup needed.
           </p>
 
           <div class="hero-pill-row">
@@ -55,17 +58,17 @@
 
           <div class="hero-actions">
             <a class="btn btn-primary" href="#start-here">Start Here</a>
-            <a class="btn btn-secondary" href="#webhook-lab">Test a Webhook</a>
+            <a class="btn btn-secondary" href="#playground">Open API Viewer</a>
           </div>
 
           <div class="hero-checks">
             <article>
-              <strong>1. Pick a sample</strong>
-              <p>Choose Leads, Accounts, Tasks, Products, or another ready-made example.</p>
+              <strong>Instant sample data</strong>
+              <p>Choose Leads, Accounts, Tasks, Products, or another ready-made collection.</p>
             </article>
             <article>
-              <strong>2. See the JSON</strong>
-              <p>The response viewer fills in automatically so even new users can understand what the API returns.</p>
+              <strong>Instant JSON viewer</strong>
+              <p>Every main button on the page opens a working response in the viewer automatically.</p>
             </article>
           </div>
         </div>
@@ -73,10 +76,10 @@
         <aside class="hero-panel" data-reveal="left">
           <div class="hero-panel-top">
             <div>
-              <div class="panel-label">Sample Event</div>
-              <strong>Outbound Salesforce payload preview</strong>
+              <div class="panel-label">Live Preview</div>
+              <strong>What the API looks like</strong>
             </div>
-            <span class="mini-pill">POST /api/v1/salesforce/events/mock</span>
+            <span class="mini-pill">Ready to copy</span>
           </div>
 
           <div class="hero-metrics">
@@ -108,29 +111,29 @@
       <section class="start-section" id="start-here">
         <div class="section-heading" data-reveal="up">
           <p class="eyebrow">Start Here</p>
-          <h2>New here? Use one of these 4 buttons</h2>
-          <p>You do not need to understand every endpoint first. Start with one action below.</p>
+          <h2>New here? Start with one of these</h2>
+          <p>You do not need to understand the full API first. These buttons are the easiest place to begin.</p>
         </div>
 
         <div class="start-grid">
           <article class="start-card" data-reveal="up">
             <span class="start-step">Step 1</span>
             <h3>See all data types</h3>
-            <p>Open the summary and see everything this API includes.</p>
+            <p>Open the summary and see everything included in this mock API.</p>
             <button class="btn btn-primary" type="button" data-endpoint="/api/v1/salesforce/summary" data-scroll-target="#playground">Open Summary</button>
           </article>
 
           <article class="start-card" data-reveal="up">
             <span class="start-step">Step 2</span>
             <h3>Try sample JSON</h3>
-            <p>Load a beginner-friendly Lead response in one click.</p>
+            <p>Load a simple Lead response and see what real API output looks like.</p>
             <button class="btn btn-primary" type="button" data-endpoint="/api/v1/salesforce/leads?sort=updated_desc" data-scroll-target="#playground">Open Lead Data</button>
           </article>
 
           <article class="start-card" data-reveal="up">
             <span class="start-step">Step 3</span>
             <h3>Copy the API base URL</h3>
-            <p>Use the base URL in Postman, browser tests, or frontend demos.</p>
+            <p>Use the base URL in Postman, frontend demos, browser tests, or QA scripts.</p>
             <button class="btn btn-secondary" id="copy-base-url" type="button">Copy Base URL</button>
             <code class="start-code" id="base-url-label"></code>
           </article>
@@ -229,7 +232,7 @@
       <section class="section-grid" id="docs">
         <div class="section-heading" data-reveal="up">
           <p class="eyebrow">Easy Examples</p>
-          <h2>Try ready-made API requests</h2>
+          <h2>Try ready-made API examples</h2>
           <p>
             If you do not know which endpoint to use, click any example below. We will open it for you.
           </p>
@@ -331,7 +334,7 @@
       <section class="playground-section" id="playground">
         <div class="section-heading" data-reveal="up">
           <p class="eyebrow">API Viewer</p>
-          <h2>See the JSON here</h2>
+          <h2>See the response here</h2>
           <p>
             When you click a button anywhere on this page, the result appears here. You can also choose a request manually.
           </p>
@@ -412,7 +415,8 @@
           <p class="eyebrow">Webhook Lab</p>
           <h2>Test webhook sending and receiving</h2>
           <p>
-            Paste a public HTTPS webhook URL, choose an event, and press send. If you are not sure what to use, press the echo button and test with MockForge itself.
+            Paste a public HTTPS webhook URL, choose an event, and press send.
+            If you are not sure what to use, press the echo button and test with MockForge itself.
           </p>
         </div>
 
